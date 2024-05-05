@@ -1,0 +1,41 @@
+﻿<Application x:Class="GeometricModeling.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:local="clr-namespace:GeometricModeling"
+             xmlns:views="clr-namespace:GeometricModeling.Views"
+             xmlns:viewModels="clr-namespace:GeometricModeling.ViewModels"
+            >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Dark"/>
+                <ui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModels:DrawingEngineViewModel}">
+                <views:DrawingEngineView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:DrawingParametersViewModel}">
+                <views:DrawingParametersView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ModelParametersViewModel}">
+                <views:ModelParametersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:LinearTransformationViewModel}">
+                <views:LinearTransformationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AffineTransformationViewModel}">
+                <views:Global2DTransformationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ProjectiveTransformationViewModel}">
+                <views:ProjectiveTransformationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:SinusoidalSpiralViewModel}">
+                <views:SinusoidalSpiralView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:Lab3ViewModel}">
+                <views:Lab3View/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
