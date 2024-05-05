@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="GeometricModeling.Views.SinusoidalSpiralView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeometricModeling.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="18" Text="A:"></TextBlock>
+            <ui:TextBox Grid.Column="2" Text="{Binding A, UpdateSourceTrigger=PropertyChanged,StringFormat=f2}"/>
+            <ui:Button VerticalAlignment="Center" Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetACommand}"/>
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="18" Text="N:"></TextBlock>
+            <ui:TextBox Grid.Column="2" Text="{Binding N, UpdateSourceTrigger=PropertyChanged,StringFormat=f2}"/>
+            <ui:Button VerticalAlignment="Center" Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetNCommand}"/>
+        </Grid>
+        <Grid Grid.Row="4" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto" MaxWidth="90"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto" MaxWidth="90"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center"
+                       Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"
+                       Text="Інтервал розрахунків: [0, П/2]" FontSize="20"></TextBlock>
+            <TextBlock VerticalAlignment="Bottom" 
+                       Grid.Column="0" Grid.Row="2"
+                       FontSize="18" Text="Площа:"></TextBlock>
+            <TextBlock VerticalAlignment="Bottom" 
+                       Grid.Column="2" Grid.Row="2"
+                       Text="{Binding SinusoidalSpiral.Area, Mode=OneWay,StringFormat=n2}"/>
+            <TextBlock VerticalAlignment="Bottom" 
+                       Grid.Column="4" Grid.Row="2"
+                       FontSize="18" Text="Довжина:"/>
+            <TextBlock VerticalAlignment="Bottom"
+                       Grid.Column="6" Grid.Row="2"
+                       Text="{Binding SinusoidalSpiral.Length, Mode=OneWay,StringFormat=n3}"/>
+        </Grid>
+        <ui:Card  Grid.Row="6" HorizontalAlignment="Center">
+            <Grid Name="TangentCard"  HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Grid.Row="0" FontSize="18"
+                               Text="Відмальовувати дотичну:"/>
+                    <ui:ToggleSwitch
+                             VerticalAlignment="Center"
+                             Grid.Column="2"
+                             IsChecked="{Binding SinusoidalSpiral.IsTangentVisible}">
+                    </ui:ToggleSwitch>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Кут:" Grid.Column="0"  FontSize="18"/>
+                        <DockPanel VerticalAlignment="Center" Grid.Column="2">
+                        <TextBlock FontSize="18" Text="{Binding TangentAngle,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                                DockPanel.Dock="Right"
+                                                TextAlignment="Right"
+                                                Width="40" />
+                        <Slider Maximum="360"
+                                VerticalAlignment="Center"
+                                x:Name="AngleValue"
+                                    TickPlacement="None"
+                                            Width="200"
+                                            Minimum="0"
+                                            TickFrequency="1"
+                                            IsSnapToTickEnabled="True"  
+                                            Value="{Binding TangentAngle}"
+                                            >
+                         
+                        </Slider>
+                    </DockPanel>
+                   
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Grid.Row="0" FontSize="18"
+                               Text="Радіус кривизни:"/>
+                    <TextBlock
+                             VerticalAlignment="Center"
+                             Grid.Column="2"
+                             Text="{Binding SinusoidalSpiral.Curvature, StringFormat=f4}">
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </ui:Card>
+        <ui:Card Grid.Row="8" HorizontalAlignment="Center" >
+            <Grid Width="{Binding ElementName=TangentCard, Path=ActualWidth}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="11"
+                           FontSize="20" 
+                           HorizontalAlignment="Center"
+                           Text="Анімації"></TextBlock>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" Text="A:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" FontSize="18" Text="від" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="2" Grid.Column="4" Text="{Binding AStart, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <TextBlock Grid.Row="2" Grid.Column="6" FontSize="18" Text="до" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="2" Grid.Column="8" Text="{Binding AEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <ui:Button Grid.Row="2" Grid.Column="10" Icon="Play32" Command="{Binding AAnimationCommand}"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" Text="N:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="4" Grid.Column="2" FontSize="18" Text="від" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="4" Grid.Column="4" Text="{Binding NStart, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <TextBlock Grid.Row="4" Grid.Column="6" FontSize="18" Text="до" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="4" Grid.Column="8" Text="{Binding NEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <ui:Button Grid.Row="4" Grid.Column="10" Icon="Play32" Command="{Binding NAnimationCommand}"/>
+                
+                <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" Text="Кут:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="6" Grid.Column="2" FontSize="18" Text="від" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="6" Grid.Column="4" Text="{Binding AngleStart, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <TextBlock Grid.Row="6" Grid.Column="6" FontSize="18" Text="до" VerticalAlignment="Center"/>
+                <ui:TextBox ClearButtonEnabled="False" Grid.Row="6" Grid.Column="8" Text="{Binding AngleEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=f1}"/>
+                <ui:Button Grid.Row="6" Grid.Column="10" Icon="Play32" Command="{Binding AngleAnimationCommand}"/>
+            </Grid>
+          
+        </ui:Card>
+    </Grid>
+</UserControl>
