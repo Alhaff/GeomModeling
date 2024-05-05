@@ -1,2 +1,1 @@
-# GeomModeling
-Repository with laboratory work on geometric modeling
+* Example of work here: https://youtu.be/HD7aBQyBhXI
