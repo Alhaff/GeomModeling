@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="GeometricModeling.Views.Lab3View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeometricModeling.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ui:Card Grid.Row="0" VerticalAlignment="Center">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ui:ToggleSwitch Grid.Row="0"
+                             VerticalAlignment="Center"
+                             Grid.Column="2"
+                             Content="Видимість точок"
+                             IsChecked="{Binding Lab3.IsCurvesPointsVisible}" 
+                             >
+
+                </ui:ToggleSwitch>
+                <ui:ToggleSwitch Grid.Row="2"
+                             VerticalAlignment="Center"
+                             Grid.Column="2"
+                             Content="Видимість реперних точок"
+                             IsChecked="{Binding Lab3.IsCurvesCarcasVisible}" 
+                             >
+
+                </ui:ToggleSwitch>
+                <ui:Button Grid.Row="4" Icon="Delete48" Command="{Binding ClearContourCommand}">
+                    Видалити поточний контур
+                </ui:Button>
+                </Grid>
+        </ui:Card>
+        <ui:Card  Grid.Row="2" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" >
+                    Режим будування
+                </TextBlock>
+                <ui:ToggleSwitch Grid.Row="0"
+                                 Grid.Column="2"
+                             VerticalAlignment="Bottom"
+                              
+                             IsChecked="{Binding IsDialogModeActive}">
+                    <behaviours:Interaction.Triggers>
+                        <behaviours:EventTrigger EventName="Checked">
+                            <behaviours:InvokeCommandAction Command="{Binding DialogModeOnCommand}">
+
+                            </behaviours:InvokeCommandAction>
+                        </behaviours:EventTrigger>
+                        <behaviours:EventTrigger EventName="Unchecked">
+                            <behaviours:InvokeCommandAction Command="{Binding DialogModeOffCommand}">
+
+                            </behaviours:InvokeCommandAction>
+                        </behaviours:EventTrigger>
+                    </behaviours:Interaction.Triggers>
+                </ui:ToggleSwitch>
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                      Visibility="{Binding DialogModeSettingsVisibility}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" TextWrapping="Wrap" FontSize="16">
+                        Натисніть правою клавішею миші на полотні для малювання контура.<LineBreak/> Натисніть кнопку знизу для замкнення поточного контуру.
+                    </TextBlock>
+                    <ui:Button Grid.Row="2" Content="Завершити контур" Command="{Binding CompleteCurrentContourCommand}"/>
+                </Grid>
+            </Grid>
+        </ui:Card>
+        <ui:Card Grid.Row="4" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="Зберегти контур у файл"
+                           FontSize="18"/>
+                <ui:Button Grid.Row="0" Grid.Column="2" 
+                           Width="50"
+                           Icon="Save28"
+                           Command="{Binding SaveCurrentContourToFileCommand}" />
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="Завантажити контур з файлу"
+                           FontSize="18"/>
+                <ui:Button Grid.Row="2" Grid.Column="2"
+                           Icon="DocumentAdd48" 
+                           Width="50"
+                           Command="{Binding LoadNewContourFromFileCommand}"/>
+            </Grid>
+            
+        </ui:Card>
+        <ui:Card Grid.Row="6" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="Завантажити фон"
+                           FontSize="18"/>
+                <ui:Button Grid.Row="0" Grid.Column="2" 
+                           Width="50"
+                           Icon="ImageAdd24"
+                           Command="{Binding LoadBackgroundImageCommand}" />
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="Видалити фон"
+                           FontSize="18"/>
+                <ui:Button Grid.Row="2" Grid.Column="2"
+                           Icon="Delete48" 
+                           Width="50"
+                           Command="{Binding DeleteBackgroundImageCommand}"/>
+            </Grid>
+
+        </ui:Card>
+        <ui:Card Grid.Row="8" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+               
+                <TextBlock Grid.Column="0" Grid.Row="0" FontSize="18">
+                    Кроків анімації:
+                </TextBlock>
+                <ui:TextBox Grid.Column="2" Grid.Row="0" Text="{Binding AnimationStepAmount, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" FontSize="18">
+                   Запустити анімацію
+                </TextBlock>
+                <ui:Button Grid.Column="2"
+                           Grid.Row="2"
+                   Icon="Play32"
+                   Command="{Binding RunContourChangeAnimationCommand}"/>
+            </Grid>
+        </ui:Card>
+       
+    </Grid>
+</UserControl>
