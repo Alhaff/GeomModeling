@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="GeometricModeling.Views.LinearTransformationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:local="clr-namespace:GeometricModeling.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontSize="25"
+                   HorizontalAlignment="Center"
+                   Text="Зміщення"/>
+        <Grid Grid.Row="1" Margin="0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MaxWidth="50"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition  Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="20" Text="dX:"/>
+                <ui:TextBox x:Name="dx" Grid.Column="2" Padding="5 2 2 2"
+                            Text="{Binding OffsetDX, StringFormat=f2}" />
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" 
+                            Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ui:Button  Icon="ArrowReset32"
+                           Command="{Binding SetOffsetDXCommand}"
+                           />
+                    <ui:Button Margin="5 0 0 0"  Icon="Add32"
+                           Command="{Binding AddOffsetDXCommand}"
+                          />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MaxWidth="50"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition  Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="20" Text="dY:"/>
+                <ui:TextBox x:Name="dy" Grid.Column="2" Padding="5 2 2 2"
+                            Text="{Binding OffsetDY, StringFormat=f2}" />
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" 
+                            Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ui:Button  Icon="ArrowReset32"
+                           Command="{Binding SetOffsetDYCommand}"
+                           />
+                    <ui:Button Margin="5 0 0 0"  Icon="Add32"
+                           Command="{Binding AddOffsetDYCommand}"
+                          />
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+        <TextBlock Grid.Row="2" FontSize="25" 
+                   HorizontalAlignment="Center"
+                   Text="Обертання"/>
+        <Grid Grid.Row="3" Margin="0 5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="5"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MaxWidth="50"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition  Width="2*"  MaxWidth="200"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="20" Text="Кут:"/>
+                <ui:TextBox x:Name="Angle" Grid.Column="2" Padding="5 2 2 2"
+                            Text="{Binding Angle, StringFormat=f2}" />
+                <StackPanel Grid.Column="4" 
+                            Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ui:Button  Icon="ArrowReset32"
+                           Command="{Binding SetAngleCommand}"
+                          />
+                    <ui:Button Margin="5 0 0 0"  Icon="Add32"
+                           Command="{Binding AddAngleCommand}"
+                          />
+                </StackPanel>
+
+
+            </Grid>
+            <Grid Grid.Row="2" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition  Width="*"  MaxWidth="200"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Center" FontSize="20" Text="Центр(x,y):"/>
+                <ui:TextBox Grid.Column="2" x:Name="centerX" Padding="5 2 2 2"
+                            Text="{Binding CenterX,UpdateSourceTrigger=PropertyChanged, StringFormat=f2}" />
+                <ui:TextBox Grid.Row="2"  Grid.Column="2" x:Name="centerY" Padding="5 2 2 2"
+                            Text="{Binding CenterY,UpdateSourceTrigger=PropertyChanged,StringFormat=f2}" />
+                <ui:Button Grid.RowSpan="3" VerticalAlignment="Center" Grid.Column="4" Icon="ArrowReset32"
+                           Command="{Binding SetCenterCommand}"                               />
+                   
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
