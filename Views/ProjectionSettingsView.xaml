@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="GeometricModeling.Views.ProjectionSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeometricModeling.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ui:Card Grid.Row="0" HorizontalAlignment="Center">
+        <TextBlock  FontSize="24"
+                  
+                   Text="Властивості проекції"/>
+        </ui:Card>
+        <ui:Card Grid.Row="2">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="P: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding P,UpdateSourceTrigger=PropertyChanged,StringFormat=f2}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetPCommand}"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Cos A: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding CosA,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetCosACommand}"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Sin A: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding SinA,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetSinACommand}"/>
+                </Grid>
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Cos G: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding CosG,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetCosGCommand}"/>
+                </Grid>
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Sin G: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding SinG,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetSinGCommand}"/>
+                </Grid>
+                <Grid Grid.Row="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Кут А: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding AngleA,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetAngleACommand}"/>
+                </Grid>
+                <Grid Grid.Row="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Кут G: " FontSize="24" 
+                       VerticalAlignment="Center"/>
+                    <ui:TextBox Grid.Column="2" Text="{Binding AngleG,UpdateSourceTrigger=PropertyChanged,StringFormat=f}"/>
+                    <ui:Button Grid.Column="4" Icon="ArrowReset32" Command="{Binding SetAngleGCommand}"/>
+                </Grid>
+                <ui:Button Grid.Row="14" Icon="ArrowReset32"
+                   HorizontalAlignment="Center"
+                   Content="Значення за замовчуванням"
+                   Command="{Binding ReturnToDefaultCommand}"/>
+            </Grid>
+        </ui:Card>
+    </Grid>
+</UserControl>
