@@ -1,0 +1,29 @@
+﻿<Window x:Class="GeometricModeling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeometricModeling"
+        xmlns:views="clr-namespace:GeometricModeling.Views"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="{Binding BackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ui:TitleBar Grid.Row="0" Grid.ColumnSpan="2"
+                     Title="Geometric Modeling">
+        </ui:TitleBar>
+        <ContentControl Content="{Binding DrawingEngineView}" Grid.Row="1" Grid.Column="0"/>
+        <ContentControl Content="{Binding DrawingParametrsView}" Grid.Row="1" Grid.Column="1"/>
+    </Grid>
+</Window>

@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="GeometricModeling.Views.Global2DTransformationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeometricModeling.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
+           
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition MaxHeight="120"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition MaxHeight="120"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition  MaxHeight="120"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontSize="24" Text="R0: "/>
+        <TextBlock Grid.Row="3" Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontSize="24" Text="RX: "/>
+        <TextBlock Grid.Row="5" Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontSize="24" Text="RY: "/>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="X:"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="Y:"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="W:"/>
+
+            <ui:TextBox Grid.Row="0" Grid.Column="2"
+                        VerticalAlignment="Center"
+                    Text="{Binding R0X, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="2" Grid.Column="2"
+                        VerticalAlignment="Center"
+                    Text="{Binding R0Y, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="4" Grid.Column="2"
+                        VerticalAlignment="Center"
+                    Text="{Binding R0W, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="X:"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="Y:"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="W:"/>
+            <ui:TextBox Grid.Row="0"  Grid.Column="2"
+                    Text="{Binding RxX, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="2" Grid.Column="2"
+                    Text="{Binding RxY, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="4"  Grid.Column="2"
+                    Text="{Binding RxW, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition MaxHeight="35"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="X:"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="Y:"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="15" Text="W:"/>
+            <ui:TextBox Grid.Row="0"  Grid.Column="2"
+                    Text="{Binding RyX, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="2"  Grid.Column="2"
+                    Text="{Binding RyY, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+            <ui:TextBox Grid.Row="4"  Grid.Column="2"
+                    Text="{Binding RyW, UpdateSourceTrigger=PropertyChanged, StringFormat=n3}"
+            />
+        </Grid>
+        <ui:Button Grid.Row="1" Grid.Column="5"
+                   Icon="ArrowReset32" 
+                   VerticalAlignment="Center"
+                   Command="{Binding SetR0Command}"/>
+        <ui:Button Grid.Row="3" Grid.Column="5"
+                   VerticalAlignment="Center"
+                   Icon="ArrowReset32" 
+                   Command="{Binding SetRXCommand}"/>
+        <ui:Button Grid.Row="5" Grid.Column="5"
+                   VerticalAlignment="Center"
+                   Icon="ArrowReset32" 
+                   Command="{Binding SetRYCommand}"/>
+    </Grid>
+</UserControl>
